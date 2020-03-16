@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Vue.js 实战示例</title>
+</head>
+<body>
+    <div id="app">
+        <div id="jquery-div"></div>
+        <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=1)" width="100%" color=#987cb9 SIZE=1/>
+            <div class="vue-div">
+            <button v-if="showBtn" v-on:click="handleClick">Click Me</button>
+            <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=1)" width="100%" color=#987cb9 SIZE=1 />
+            <ul>
+                <li v-for="book in books">{{book.name}}</li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script>
+        var showBtn=true;
+        if(showBtn){
+            var btn = $('<button>Jquery Click Me<button>');
+                btn.on('click',function(){
+                    console.log("Jquery Button Clicked");
+                });
+                $('#jquery-div').append(btn);
+        }
+    </script>
+    <script>
+        // 开启Vue 代码后，Jquery失效；若需要显示Jquery效果，可删除本地代码
+        new Vue({
+            el:'#app',
+            data:{
+                showBtn:true,
+                books:[
+                    {name:'Vue.js 实战'},
+                    {name:'深入浅出Vue.js'},
+                    {name:'JavaScprit 权威指南'},
+                ]
+            },
+            methods: {
+                handleClick:function(){
+                    console.log("Vue Button Clicked");
+                }
+            },
+        })
+    </script>
+</body>
+</html>

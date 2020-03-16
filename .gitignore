@@ -16,3 +16,4 @@ tmp.txt*
 *.ntvs*
 *.njsproj
 *.sln
+*.code-workspace
