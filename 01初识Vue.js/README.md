@@ -1,7 +1,7 @@
 ### Vue.js是什么？
 Vue.js是渐进式的JavaScript框架，简单小巧的核心，渐进式技术栈，足以应付任何规模的应用。它提供了现代Web开发中常见的高级功能，如：
 - 解耦视图与数据（mvvm）
--可复用的组件（v-component）
+- 可复用的组件（v-component）
 - 前端路由（vue-router）
 - 状态管理（vuex）
 - 虚拟DOM(Virtual Dom)

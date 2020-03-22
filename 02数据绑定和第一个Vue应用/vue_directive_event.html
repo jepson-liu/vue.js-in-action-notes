@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue.js 实战示例</title>
+</head>
+
+<body>
+    <div id="app">
+        <a v-bind:href="url">百度</a><br>
+        <img v-bind:src="imgUrl" width="10%">
+        <hr>
+        <a :href="url">百度(语法糖)</a><br>
+        <img :src="imgUrl" width="10%">
+        <hr>
+        <p v-show="vShow">这个一段文本</p><br>
+        <button v-on:click="doToggle">点击切换显示</button>
+        <button @click="vShow=!vShow">内联切换显示</button>
+
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                url:'https://www.baidu.com',
+                imgUrl:'https://www.baidu.com/img/bd_logo1.png',
+                vShow:false,
+            },
+            methods: {
+                doToggle:function(){
+                    this.vShow=!this.vShow
+                },
+                init:function(text){
+                    console.log("text="+text)
+                }
+            },
+            mounted() {
+                this.init("mounted 调用init");
+            },
+        })
+        app.init("app 调用init");
+    </script>
+</body>
+
+</html>

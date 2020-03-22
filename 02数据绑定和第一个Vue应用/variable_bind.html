@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue.js 实战示例</title>
+</head>
+
+<body>
+    <div id="app">
+        <h6>Hello，{{ a }}</h6>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
+    <script>
+        var myData = {
+            a: 1
+        }
+        var app = new Vue({
+            el: '#app',
+            data: myData
+        })
+    </script>
+</body>
+
+</html>

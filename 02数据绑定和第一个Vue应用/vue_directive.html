@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue.js 实战示例</title>
+</head>
+
+<body>
+    <div id="app">
+        <span v-html="link"></span>
+        <br>
+        <span>双向绑定：{{link}}</span>
+        <hr>
+        <span v-pre>不会编译：{{link}}</span>
+        <hr>
+        <span>计算表达式number*5：{{ number*5 }}</span><br>
+        <span>三元运算：{{ booleanVar ? "真":"假" }}</span><br>
+        <span>函数:{{ text.split(',').reverse().join(',') }}</span><br>
+        <span v-if="vIf" class="if">v-if span</span><br>
+        <span v-show="vShow" class="show">v-show span</span><br>
+
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                link: '<a href="https://www.baidu.com">点击，跳转到百度</a>',
+                number: 10,
+                booleanVar: false,
+                text: '123,456',
+                vIf:false,
+                vShow:false,
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue.js 实战示例</title>
+</head>
+
+<body>
+    <div id="app">
+        <h6>北京时间：{{ date|formatDate('yyyy-MM-dd hh:mm:ss.S')}}</h6>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.6.11/vue.js"></script>
+    
+    <script>
+        Date.prototype.format = function(fmt)   
+        { //author: meizz   
+        var o = {   
+            "M+" : this.getMonth()+1,                 //月份   
+            "d+" : this.getDate(),                    //日   
+            "h+" : this.getHours(),                   //小时   
+            "m+" : this.getMinutes(),                 //分   
+            "s+" : this.getSeconds(),                 //秒   
+            "q+" : Math.floor((this.getMonth()+3)/3), //季度   
+            "S"  : this.getMilliseconds()             //毫秒   
+        };   
+        if(/(y+)/.test(fmt))   
+            fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
+        for(var k in o)   
+            if(new RegExp("("+ k +")").test(fmt))   
+        fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+        return fmt;   
+        }
+    </script>
+    <script>
+        var padDate=function(value){
+            return value<10?'0'+value:value;
+        };
+        var app = new Vue({
+            el: '#app',
+            data: {
+                date: new Date()
+            },
+            mounted() {
+                var _this = this;
+                this.timer = setInterval(
+                    function () {
+                        _this.date = new Date()
+                    }, 100
+                )
+            },
+            beforeDestroy() {
+                if (this.timer) {
+                    clearInterval(this.timer)
+                }
+            }, 
+            filters:{
+                formatDate:function(value,pattern){
+                    var fmt=pattern == "" || pattern == null || pattern == undefined?'yyyy-MM-dd HH:mm:ss':pattern;
+                    return new Date(value).format(pattern);
+                },
+             }
+        })
+    </script>
+</body>
+
+</html>
